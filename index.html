@@ -36,9 +36,13 @@
   <script src="./static/js/image_interact.js"></script>
   <script src="./static/js/switch_videos.js"></script>
 
+  <link rel="stylesheet" href="./static/css/nav.css">
   <link rel="stylesheet" href="./static/css/style.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css"
     integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
@@ -50,7 +54,6 @@
     onload="renderMathInElement(document.body);"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 
-
   <!-- medium zoom https://github.com/francoischalifour/medium-zoom -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> <!-- jquery -->
   <script defer src="./static/js/medium-zoom.min.js"></script>
@@ -59,90 +62,127 @@
 
 <body>
   <div class="header-wrapper">
-    <div class="header-container" id="header-container">
-      <div class="header-content">
-        <h1 style="margin-top: 0px"><i>OS-Genesis</i></h1>
-        <h2>Automating GUI Agent Trajectory Construction<br>
-          via Reverse Task Synthesis</h2>
-        <p>
-          Introducing OS-Genesis, a
-          <em><strong>manual-free</strong></em>
-          data pipeline for synthesizing GUI agent trajectory. OS-Genesis is characterized by the following
-          core features:
-        </p>
-
-        <div class="icon-container">
-          <div class="icon-item">
-            <img src="./static/img/icons/visual.svg" alt="Visual Representation Icon">
-            <div><strong>Visual Representations</strong>: We explore various vision encoders and their
-              combinations.</div>
-          </div>
-          <div class="icon-item">
-            <img src="./static/img/icons/connector.svg" alt="Connector Design Icon">
-            <div><strong>Connector Design</strong>: We design a new dynamic and <i>spatially-aware</i>
-              connector that integrates visual features from several models with LLMs while reducing the
-              number of tokens.</div>
-          </div>
-          <div class="icon-item">
-            <img src="./static/img/icons/data.svg" alt="Instruction Tuning Data Icon">
-            <div><strong>Instruction Tuning Data</strong>: We curate high-quality visual instruction-tuning
-              data from public sources, emphasizing the importance of distribution balancing.</div>
-          </div>
-          <div class="icon-item">
-            <img src="./static/img/icons/recipe.svg" alt="Instruction Tuning Recipes Icon">
-            <div><strong>Instruction Tuning Recipes</strong>: We discuss instruction tuning strategies and
-              practices.</div>
-          </div>
-          <div class="icon-item">
-            <img src="./static/img/icons/eval.svg" alt="Benchmarking Icon">
-            <div><strong>Benchmarking</strong>: We examine existing MLLM benchmarks and introduce a new
-              vision-centric benchmark, "CV-Bench".</div>
-          </div>
-        </div>
-
-        <div class="button-container">
-          <!-- replace arxiv -->
-          <a href="https://arxiv.org/abs/2406.16860" class="button paper-link" target="_blank">
-            <span class="icon is-small">
-              <i class="ai ai-arxiv"></i>
-            </span>
-            arXiv
-          </a>
-          <!-- replace pdf -->
-          <a href="https://arxiv.org/pdf/2406.16860" class="button paper-link" target="_blank">
-            <span class="icon is-small">
-              <i class="fas fa-file-pdf"></i>
-            </span>
-            <span>pdf</span>
-          </a>
-          <!-- replace image -->
-          <a href="https://github.com/cambrian-mllm/cambrian" class="button" target="_blank">
-            <span class="icon is-small">
-              <i class="fab fa-github"></i>
-            </span>
-            <span>Code</span>
-          </a>
-          <!-- <br> -->
-          <a href="https://huggingface.co/collections/nyu-visionx/cambrian-1-models-666fa7116d5420e514b0f23c"
-            class="button" target="_blank">
-            <span class="icon is-small">
-              <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
-                style="height: 1em;">
-            </span>
-            <span>Checkpoints</span>
-          </a>
-          <a href="https://huggingface.co/collections/nyu-visionx/cambrian-data-6667ce801e179b4fbe774e11" class="button"
-            target="_blank">
-            <span class="icon is-small">
-              <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
-                style="height: 1em;">
-            </span>
-            <span>Data</span>
+    <div class="header-container" style="padding: 0; flex-direction: column;">
+      <!-- z-index cannot be less than 1001 -->
+      <nav
+        class="navbar"
+        role="navigation"
+        style="z-index: 1001; background-color: #FFFFFF00;"
+      >
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
         </div>
-      </div>
-      <div class="header-image">
-        <img draggable="false" src="static/img/os-genesis.jpeg" alt="Teaser Image" class="teaser-image">
+        <div class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <!-- Dropdown menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" style="color: #FEAE6F">
+                More Research
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="https://osatlas.github.io/">
+                  OS-Atlas
+                </a>
+                <a class="navbar-item" href="https://github.com/njucckevin/SeeClick">
+                  SeeClick
+                </a>
+                <a class="navbar-item" href="https://chengyou-jia.github.io/AgentStore-Home/">
+                  AgentStore
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="header-container" id="header-container">
+        <div class="header-content">
+          <h1 style="margin-top: 0px"><i>OS-Genesis</i></h1>
+          <h2>Automating GUI Agent Trajectory Construction<br>
+            via Reverse Task Synthesis</h2>
+          <p>
+            Introducing OS-Genesis, a
+            <em><strong>manual-free</strong></em>
+            data pipeline for synthesizing GUI agent trajectory. OS-Genesis is characterized by the following
+            core features:
+          </p>
+
+          <div class="icon-container">
+            <div class="icon-item">
+              <img src="./static/img/icons/visual.svg" alt="Visual Representation Icon">
+              <div><strong>Visual Representations</strong>: We explore various vision encoders and their
+                combinations.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/connector.svg" alt="Connector Design Icon">
+              <div><strong>Connector Design</strong>: We design a new dynamic and <i>spatially-aware</i>
+                connector that integrates visual features from several models with LLMs while reducing the
+                number of tokens.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/data.svg" alt="Instruction Tuning Data Icon">
+              <div><strong>Instruction Tuning Data</strong>: We curate high-quality visual instruction-tuning
+                data from public sources, emphasizing the importance of distribution balancing.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/recipe.svg" alt="Instruction Tuning Recipes Icon">
+              <div><strong>Instruction Tuning Recipes</strong>: We discuss instruction tuning strategies and
+                practices.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/eval.svg" alt="Benchmarking Icon">
+              <div><strong>Benchmarking</strong>: We examine existing MLLM benchmarks and introduce a new
+                vision-centric benchmark, "CV-Bench".</div>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <!-- replace arxiv -->
+            <a href="https://arxiv.org/abs/2406.16860" class="button paper-link" target="_blank">
+              <span class="icon is-small">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              arXiv
+            </a>
+            <!-- replace pdf -->
+            <a href="https://arxiv.org/pdf/2406.16860" class="button paper-link" target="_blank">
+              <span class="icon is-small">
+                <i class="fas fa-file-pdf"></i>
+              </span>
+              <span>pdf</span>
+            </a>
+            <!-- replace image -->
+            <a href="https://github.com/cambrian-mllm/cambrian" class="button" target="_blank">
+              <span class="icon is-small">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+            <!-- <br> -->
+            <a href="https://huggingface.co/collections/nyu-visionx/cambrian-1-models-666fa7116d5420e514b0f23c"
+              class="button" target="_blank">
+              <span class="icon is-small">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
+                  style="height: 1em;">
+              </span>
+              <span>Checkpoints</span>
+            </a>
+            <a href="https://huggingface.co/collections/nyu-visionx/cambrian-data-6667ce801e179b4fbe774e11"
+              class="button" target="_blank">
+              <span class="icon is-small">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
+                  style="height: 1em;">
+              </span>
+              <span>Data</span>
+            </a>
+          </div>
+        </div>
+        <div class="header-image">
+          <img draggable="false" src="static/img/os-genesis.jpeg" alt="Teaser Image" class="teaser-image">
+        </div>
       </div>
     </div>
   </div>
