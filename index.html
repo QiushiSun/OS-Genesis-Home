@@ -239,45 +239,40 @@
       We introduce OS-Genesis, an interaction-driven pipeline that synthesizes high-quality and diverse GUI agent trajectory data without human supervision. By leveraging reverse task synthesis, OS-Genesis enables effective training of GUI agents to achieve superior performance on dynamic benchmarks such as AndroidWorld and WebArena.
 
       <br><br>
-      Cambrian-1 is structured around five key pillars, each offering important insights into the design space of
-      MLLMs:
+      OS-Genesis is built around the following components, aiming for synthesizing high-quality trajectory data for GUI agents:
     <ol class="text">
-      <li><strong><a href="#visual_representations">&sect;Visual Representations</a></strong>: We explore various
-        vision encoders and their combinations.</li>
-      <li><strong><a href="#connector_design">&sect;Connector Design</a></strong>: We design a new dynamic and
-        <i>spatially-aware</i> connector that integrates visual features from several models with LLMs while
-        reducing the number of tokens.
+      <li><strong><a href="#visual_representations">&sect;Interaction-Driven Functional Discovery</a></strong>: A rule-based process systematically interacts with GUIs to uncover functionalities without pre-defined tasks.</li>
+      <li><strong><a href="#connector_design">&sect;Reverse Task Synthesis</a></strong>: Converts triples (pre- and post-action states, actions) into low-level instructions and associate them with high-level tasks. This retrospective approach bridges the gap between dynamic GUI functionalities and executable trajectories
       </li>
-      <li><strong><a href="#instruction_data">&sect;Instruction Tuning Data</a></strong>: We curate high-quality
-        visual instruction-tuning data from public sources, emphasizing the importance of distribution
-        balancing.</li>
-      <li><strong><a href="#sec:inst_tuning">&sect;Instruction Tuning Recipes</a></strong>: We discuss instruction
-        tuning strategies and practices.</li>
-      <li><strong><a href="#sec:benchmarking">&sect;Benchmarking</a></strong>: We examine existing MLLM benchmarks
-        and introduce a new vision-centric benchmark "CV-Bench".</li>
+      <li><strong><a href="#instruction_data">&sect;Trajectory Reward Model</a></strong>: Evaluates synthesized trajectories using a graded scoring system that measures task completion and action coherence. This ensures the retention of valuable incomplete trajectories while maintaining high data quality.</li>
+      <li><strong><a href="#sec:benchmarking">&sect;Performance</a></strong>: We examine existing online benchmarks like AndroidWorld and WebArena. OS-Genesis achieves notable performance gains, closing the gap with human-annotated data.</li>
     </ol>
     </p>
 
     <div class="icon-row">
       <a href="#visual-representation" class="icon-link">
         <img src="static/img/icons/visual.svg" alt="Visual Representation Logo" class="icon">
-        Visual<br>Representations
+        Main<br>Pipeline
       </a>
-      <a href="#connector_design" class="icon-link">
+      <!-- <a href="#connector_design" class="icon-link">
         <img src="static/img/icons/connector.svg" alt="Connector Logo" class="icon">
-        Connector<br>Design
+        Perform<br>Design
+      </a> -->
+      <!-- <a href="#instruction_data" class="icon-link">
+        <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
+        Instruction<br>Data
+      </a> -->
+      <a href="#sec:benchmarking" class="icon-link">
+        <img src="static/img/icons/eval.svg" alt="Eval Logo" class="icon">
+        Evaluation<br>Results
       </a>
       <a href="#instruction_data" class="icon-link">
         <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
-        Instruction<br>Data
+        In-depth<br>Analysis
       </a>
-      <a href="#sec:inst_tuning" class="icon-link">
-        <img src="static/img/icons/recipe.svg" alt="Recipe Logo" class="icon">
-        Instruction<br>Recipes
-      </a>
-      <a href="#sec:benchmarking" class="icon-link">
-        <img src="static/img/icons/eval.svg" alt="Eval Logo" class="icon">
-        Evaluation<br>Protocol
+      <a href="#instruction_data" class="icon-link">
+        <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
+        Code<br>Data
       </a>
     </div>
 
@@ -288,6 +283,14 @@
 
 
     <p class="text abstract">
+      We will release all <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">checkpoints</a>,
+      <a href="https://github.com/OS-Copilot/OS-Genesis" target="_blank">code</a>,
+      <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">synthesized trajectories</a>,
+      and more details. We hope OS-Genesis can inspire and boost future research in building GUI agents.
+    </p>
+
+    <!-- 
+    <p class="text abstract">
       To this end, Cambrian-1 not only achieves state-of-the-art performance, but also serves as a comprehensive,
       open cookbook for instruction-tuned MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM
         performance</a>.
@@ -296,168 +299,51 @@
       <a href="https://huggingface.co/nyu-visionx" target="_blank">datasets</a>,
       and detailed instruction-tuning and evaluation recipes. We hope our release will inspire and accelerate
       advancements in multimodal systems and visual representation learning.
+    </p> -->
+
+    <h1 class="text">Interaction-Driven Functional Discovery</h1>
+
+    <p class="text">
+      Interaction-Driven Functional Discovery is a rule-based exploration process in OS-Genesis that systematically traverses dynamic GUI environments by interacting with UI elements (e.g., clicking, typing, scrolling). This approach uncovers diverse functionalities without relying on predefined tasks, collecting interaction triples that capture pre- and post-action states along with executed actions. These triples form the foundation for reverse task synthesis, enabling the generation of meaningful and executable task instructions. 
+    </p>
+
+    <img src="public/sub-1.gif" width="100%">
+
+    <h1 class="text">Reverse Task Synthesis</h1>
+
+    <p class="text">
+      Reverse Task Synthesis is a core component of OS-Genesis that transforms observed interaction triples—comprising pre- and post-action states and actions—into meaningful low-level and high-level task instructions. By retroactively interpreting changes in the GUI environment caused by actions, this process generates executable low-level instructions, which are then aggregated into broader, goal-oriented high-level tasks. This human-free approach bridges the gap between abstract instructions and dynamic GUI functionalities, enabling the creation of diverse, high-quality trajectories without reliance on predefined tasks or human supervision.
+    </p>
+
+    <img src="public/sub-2.gif" width="100%">
+
+    <h1 class="text">Exploration and Reward Modeling</h1>
+
+    <p class="text">
+      After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
     </p>
 
     <img src="public/explore-and-reward.gif" width="100%">
 
-    <img src="public/sub-1.gif" width="100%">
-
-    <img src="public/sub-2.gif" width="100%">
+    <p class="text">
+    To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
+    </p>
 
     <hr>
 
-    <div id='visual_representations' class="vision-block">
+    
 
-      <div id="sec:benchmarking" class="sub-section">
-        <h1 class="text">Analyzing the Benchmarks</h1>
-
-        <p class="text">
-        <p class="text">
-          <strong>Who's answering: LLM or MLLM?:</strong> We compare performance between vision-disabled and
-          vision-enabled settings across MLLMs trained with 23 different vision backbones. Our findings reveal
-          that some benchmarks such as MMMU and AI2D are less reliant on visual inputs, whereas others such as
-          MMVP and MME experience significant performance declines, indicating their effective evaluation of
-          multimodality</li>
-        </p>
-        <p class="text">
-          <strong>Benchmark Clustering and Analysis:</strong> Through correlation analysis and principal
-          component analysis of MLLM performances across various benchmarks, distinct clusters emerge
-          categorized as "General," "Knowledge," "Chart & OCR," and "Vision-Centric."
-          We also find that vision-centric benchmarks are underrepresented in the current evaluation
-          landscape.
-        </p>
-        <d-figure id="fig-comparison">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/bench_cat.png" alt="benchmark category">
-            <figcaption>
-              <strong>Figure 1:</strong> Analyzing the benchmarks.
-              <strong>Left:</strong> Performance comparison of MLLMs with visual input enabled and
-              disabled across various benchmarks. <strong>Right:</strong> Principal component analysis
-              displaying clusters of benchmarks based on performance metrics, with bubble size
-              corresponding to benchmark size.
-            </figcaption>
-          </figure>
-        </d-figure>
-      </div>
-      <div id="cv-bench" class="sub-section">
-
-        <p class="text"><strong>Cambrian Vision-Centric Benchmark (CV-Bench) </strong>
-          To address the scarcity of vision-centric benchmarks, we introduce CV-Bench&mdash;repurposing
-          standard vision tasks for multimodal evaluation. CV-Bench contains approximately 2600 vision-centric
-          VQA questions, addressing the issues with existing vision-centric bechmark size.
-        </p>
-
-        <d-figure id="fig-cvcb">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/cvcb.jpg" alt="benchmark category">
-            <figcaption>
-              <strong>Figure 2:</strong> Example questions in CV-Bench that focuses on 2D and 3D visual
-              understanding.
-            </figcaption>
-          </figure>
-        </d-figure>
-
-      </div>
-      <div id="sec:inst_tuning" class="sub-section">
-
-        <h1 class="text">Instruction Tuning Recipes </h1>
-        <p class="text">
-          MLLMs connect pre-trained LLM and vision backbones using a connector such as an MLP projector.
-          Various studies have suggested different optimal training methodologies for MLLMs.
-        </p>
-        <p class="text">
-          <strong>One Stage vs Two Stage Training</strong> Recent work suggests skipping connector
-          pre-training to reduce compute costs without harming performance.
-          We experiment with 0, 0.5M, and 1.2M adapter data. Following LLaVA's method<d-cite
-            key="liu2023visual"></d-cite>, we initially tune only the connector, then unfreeze both the LLM
-          and connector for instruction tuning with a 737K data mix. <a href="#fig-studyadapter">Figure 3</a>
-          indicates that pre-training the connector boosts performance, and using more adapter data enhances
-          it further, leading us to standardize on a 2-stage training approach with 1.2M adapter data.
-        </p>
-
-        <p class="text">
-          <strong>Freeze vs Unfreeze Vision Encoder</strong>
-          There are also mixed practices in freezing or unfreezing vision backbones during fine-tuning.
-          Some argue that unfreezing the vision backbone significantly degrades performance.
-          Our experiments demonstrate that, with a reasonable vision model learning rate,
-          unfreezing benefits performance across all benchmarks except for a marginal change in Knowledge
-          benchmarks.
-        </p>
-        <d-figure id="fig-studyadapter">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/performance_plot.png"
-              alt="Instruction Tuning Recipes">
-            <figcaption>
-              <strong>Figure 3:</strong> MLLMs benefit from pre-training the adapter with more data, and
-              finetuning with unfrozen visual encoder.
-            </figcaption>
-          </figure>
-        </d-figure>
-      </div>
       <div id='visual-representation' class="viusal-representation-block">
-        <h1 class="text">MLLMs as a Vision Model Evaluator </h1>
+        <h1 class="text">Main Experiments </h1>
+
+        <h2 class="text">Mobile </h2>
 
         <p class="text">
-          MLLMs provide a more real-world evaluation of visual representations than traditional benchmarks
-          like ImageNet-1k. We use 2-stage instruction tuning with 1.2M adapter data and 737K fine-tuning data
-          to compare a variety of vision models on downstream MLLM performance.
-          Our evaluations show language-supervised models exhibit strong advantages across all benchmark
-          categories, especially in OCR & chart tasks. However, despite the smaller dataset size of SSL models
-          like DINOv2, they perform competitively in vision-centric benchmarks.
+          We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworlddynamicbenchmarkingenvironment"></d-cite> and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite>.
+          The results are shown in <a href="#tab:mobile">Table 2</a>
         </p>
-
-
-        <d-figure id="fig-mllm_as_interface">
-          <figure class="responsive-content">
-            <iframe src="static/img/tuning_recipes_plot.html"></iframe>
-            <img data-zoomable="" draggable="false" src="static/img/mllm_interface_shared.png"
-              alt="MLLMs as an interface to evaluate visual representations">
-            <figcaption>
-              <strong>Figure 4:</strong> MLLMs as an interface to evaluate visual representations.
-            </figcaption>
-          </figure>
-          <p class="click-hint" style="width: 85%; margin-top: -2em;" id="mllm_interface_click_hint">
-            <img src="static/img/icons/click.gif" style="width: 1.5rem">
-            <strong>Hover & click to interact.</strong>
-          </p>
-        </d-figure>
-        <p class="text">
-          <strong>Narrowing the gap between CLIP and SSL models</strong>
-          Above, we observe that DINOv2 stands midway between SSL models and CLIP models on general VQA and
-          knowledge VQA tasks,
-          even outperforming some CLIP models on vision-centric benchmarks with higher resolution.
-          We investigate unfreezing the vision backbones and increasing the amount of visual fine-tuning data
-          to narrow this gap.
-          In <a href="#fig-narrowgap">Figure 5</a>, we observe that by unfreezing the vision backbone,
-          the DINOv2-based MLLM fine-tuned with 5M data surpasses the MLLM trained with a CLIP model on 0.7M
-          data.
-          Additionally, the gap between DINOv2 and the CLIP models is reduced under the 5M data experiment
-          setting.
-        </p>
-        <d-figure id="fig-narrowgap">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/narrow_gap.png"
-              alt="Narrowing the gap between CLIP and SSL models">
-            <figcaption>
-              <strong>Figure 5:</strong> By unfreezing the visual backbone and fine-tuning on 5M examples,
-              the gap between CLIP and DINOv2 can be narrowed.
-            </figcaption>
-          </figure>
-        </d-figure>
-
-        <p class="text">
-          <strong>Combining Multiple Vision Encoders </strong>
-          As observed in <a href="#fig-mllm_as_interface">Figure 4</a>, different vision models excel in
-          different aspects of MLLM performance.
-          We explore the potential of combining multiple vision encoders to leverage their distinctive
-          representations.
-          Given that different vision encoders use varying architectures and image resolutions, we interpolate
-          the output visual tokens to a fixed number, 576.
-          The results are tabulated in <a href="#tab:model_ensemble">Table 2</a>, where we observe consistent
-          performance improvements with the addition of more models.
-        </p>
-
-        <div id="tab:model_ensemble" style="display: flex; flex-direction: column; align-items: center;">
+        
+        <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
           <div class="table-container">
             <table class="data-table">
               <thead>
@@ -588,54 +474,38 @@
             </table>
           </div>
           <figcaption style="text-align: center; width: 140%;">
-            Table 2: All Benchmark Results for Model Ensemble with 1.2M Adapter Data + 737K
-            Instruction Tuning Data
+            Table 2: Performance on AndroidWorld and AndroidControl benchmarks.
           </figcaption>
         </div>
 
         <p class="text">
-          However, this strategy has two limitations:
-          1) it employs interpolation, which can potentially lead to information loss, especially on vision
-          encoders with high-resolution feature maps, and
-          2) it treats each model equally by simple concatenation.
-          Therefore, we seek a more effective strategy that fully leverages model combinations with less
-          information loss and more flexibility.
+          <strong>AndroidWorld:</strong> OS-Genesis demonstrates exceptional performance on the AndroidWorld benchmark, significantly narrowing the gap between open-source agents and the state-of-the-art GPT-4o-based M3A agent. Training with OS-Genesis-synthesized data achieves nearly double the success rates compared to task-driven methods, with a success rate improvement from 9.82% to 17.41% for Qwen2-VL-7B and substantial gains for other backbones like InternVL2-8B.</li>
+        </p>
+        <p class="text">
+          <strong>AndroidControl:</strong> On AndroidControl, OS-Genesis showcases strong OOD capability, outperforming baselines in both high/low-level tasks despite encountering only 20 of 833 apps during synthesis. It achieves superior action and planning, validating our exploration-first approach for generating diverse, high-quality tasks and adapting effectively to unseen environments.
+        </p>
+
+        <h2 class="text">Web </h2>
+        <p class="text">
+          Then, we evaluate OS-Genesis on web task, using challenging online benchmark: WebArena<d-cite key="zhou2024webarena"></d-cite> as the testbed.
+          The results are shown in <a href="#tab:mobile">Table 2</a>
+        </p>
+
+        <p class="text">
+          <strong>WebArena:</strong> On WebArena, OS-Genesis delivers notable performance improvements across diverse 5 navigation scenarios, outperforming task-driven baselines and achieving significant gains with InternVL2-8B and Qwen2-VL-7B backbones. By leveraging reverse task synthesis, OS-Genesis effectively explores the rich interactive elements of web environments, producing more meaningful and diverse trajectories.
         </p>
 
       </div>
     </div>
 
-    <div id='connector_design' class="connector-block">
-
-      <h1 class="text">Spatial Vision Aggregator (SVA): A New Connector Design</h1>
-      <p class="text">
-        To effectively aggregate features from multiple vision encoders and reduce information loss during
-        interpolation, we use a set of learnable latent queries that interact with multiple vision features
-        through cross-attention layers<d-cite key="sun2024survey"></d-cite>.
-        In particular, our approach incorporates two new vision-centric design principles:
-      <ol class="text">
-        <li>We encode spatial inductive bias by explicitly localizing the aggregation space for each token in
-          the query.</li>
-        <li>We perform vision feature aggregation multiple times across the LLM layers, allowing the model to
-          repeatedly reference necessary visual information.</li>
-      </ol>
-      </p>
-      <d-figure id="fig-vision_connector">
-        <figure>
-          <img data-zoomable="" draggable="false" src="static/img/sva.png" alt="Spatial Vision Aggregator (SVA)">
-          <figcaption>
-            <strong>Figure 6:</strong> Spatial Vision Aggregator (SVA).
-          </figcaption>
-        </figure>
-      </d-figure>
-    </div>
-
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
       <p class="text">
-        OS-Genesis is a data synthesis pipeline designed to revolutionize the construction of GUI agent trajectories. We hope that it can provide a promising direction for generating high-quality trajectory data for GUI agent training, bringing the community one step closer to achieving digital automation
+        OS-Genesis is a data synthesis pipeline designed to revolutionize the construction of GUI agent trajectories. Reverse task synthesis enables the generation of diverse and coherent tasks by retroactively deriving instructions from observed interactions, while TRM ensures the quality of trajectories through graded evaluations. Together, OS-Genesis address critical challenges in GUI agent trajectories construction, paving the way for high-quality agentic data generation. We hope that it can provide a promising direction for generating high-quality trajectory data for GUI agents, bringing the community one step closer to achieving digital automation.
       </p>
     </div>
+
+    <!-- OS-Genesis is a groundbreaking data synthesis pipeline that transforms the construction of GUI agent trajectories through an interaction-driven approach. By enabling the generation of diverse, high-quality trajectory data without human supervision, it addresses critical challenges in agent training. We hope OS-Genesis inspires further innovation in trajectory synthesis, advancing the field toward scalable solutions for training GUI agents and bringing the community closer to achieving comprehensive digital automation. -->
 
 
     <div id="Acknowledgement" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
@@ -650,8 +520,8 @@
     <h3>BibTeX</h3>
     <p class="bibtex">
       @article{sun2024osgenesis,<br>
-      &nbsp;&nbsp;title={{OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
-      Synthesis}},<br>
+      &nbsp;&nbsp;title={OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
+      Synthesis},<br>
       &nbsp;&nbsp;author={Qiushi Sun and Kanzhi Cheng and Zichen Ding and Chuanyang Jin and Yian Wang and Fangzhi Xu and Zhenyu Wu and Chengyou Jia and Liheng Chen and Zhoumianze Liu and Ben Kao and Guohao Li and Junxian He and Yu Qiao and Zhiyong Wu},<br>
       &nbsp;&nbsp;journal={arXiv preprint arXiv:2412.19723},<br>
       &nbsp;&nbsp;year={2024}<br>
