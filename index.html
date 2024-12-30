@@ -12,17 +12,17 @@
   <!-- Open Graph -->
   <meta property="og:url" content="https://cambrian-mllm.github.io/" />
   <meta property="og:image" content="https://cambrian-mllm.github.io/static/img/preview.png" />
-  <meta property="og:title" content="Cambrian-1: A Fully Open Vision-Centric Exploration of MLLMs" />
+  <meta property="og:title" content="OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis" />
   <meta property="og:description"
-    content="Cambrian-1 is a family of multimodal LLMs with a vision-centric design. We also release CV-Bench, a new vision-centric benchmark, and Cambrian-10M, a multimodal instruction-tuning dataset." />
+    content="OS-Genesis is an interaction-driven pipeline for synthesizing diverse and high-quality GUI agent trajectory data without human supervision." />
 
   <!-- Twitter -->
-  <meta name="twitter:url" content="https://cambrian-mllm.github.io/" />
+  <meta name="twitter:url" content="https://x.com/qiushi_sun" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://cambrian-mllm.github.io/static/img/preview.png" />
-  <meta name="twitter:title" content="Cambrian-1: A Fully Open Vision-Centric Exploration of MLLMs" />
+  <meta name="twitter:title" content="OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis" />
   <meta name="twitter:description"
-    content="Cambrian-1 is a family of multimodal LLMs with a vision-centric design. We also release CV-Bench, a new vision-centric benchmark, and Cambrian-10M, a multimodal instruction-tuning dataset." />
+    content="OS-Genesis is an interaction-driven pipeline for synthesizing diverse and high-quality GUI agent trajectory data without human supervision." />
 
   <script src="./static/js/distill_template.v2.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -90,11 +90,17 @@
                 <a class="navbar-item" href="https://osatlas.github.io/">
                   OS-Atlas
                 </a>
+                <a class="navbar-item" href="https://chengyou-jia.github.io/AgentStore-Home/">
+                  AgentStore
+                </a>
                 <a class="navbar-item" href="https://github.com/njucckevin/SeeClick">
                   SeeClick
                 </a>
-                <a class="navbar-item" href="https://chengyou-jia.github.io/AgentStore-Home/">
-                  AgentStore
+                <a class="navbar-item" href="https://github.com/xufangzhi/ENVISIONS">
+                  ENVISIONS
+                </a>
+                <a class="navbar-item" href="https://arxiv.org/abs/2310.00280">
+                  Corex
                 </a>
               </div>
             </div>
@@ -116,56 +122,51 @@
           <div class="icon-container">
             <div class="icon-item">
               <img src="./static/img/icons/visual.svg" alt="Visual Representation Icon">
-              <div><strong>Visual Representations</strong>: We explore various vision encoders and their
-                combinations.</div>
+              <div><strong>Interaction-driven</strong>: Agents actively explore GUI environments through stepwise interactions to discover functionalities and generate data.</div>
             </div>
             <div class="icon-item">
               <img src="./static/img/icons/connector.svg" alt="Connector Design Icon">
-              <div><strong>Connector Design</strong>: We design a new dynamic and <i>spatially-aware</i>
-                connector that integrates visual features from several models with LLMs while reducing the
-                number of tokens.</div>
+              <div><strong>Reverse Task Synthesis</strong>: OS-Genesis retroactively derives meaningful low/high-level task instructions from observed interactions and state changes, enabling the construction of diverse and executable trajectories without pre-defined tasks.</div>
             </div>
             <div class="icon-item">
               <img src="./static/img/icons/data.svg" alt="Instruction Tuning Data Icon">
-              <div><strong>Instruction Tuning Data</strong>: We curate high-quality visual instruction-tuning
-                data from public sources, emphasizing the importance of distribution balancing.</div>
+              <div><strong>Trajectory Data</strong>: We construct and release high-quality mobile and web trajectories to accelerate GUI agents research.</div>
             </div>
-            <div class="icon-item">
+            <!-- <div class="icon-item">
               <img src="./static/img/icons/recipe.svg" alt="Instruction Tuning Recipes Icon">
               <div><strong>Instruction Tuning Recipes</strong>: We discuss instruction tuning strategies and
                 practices.</div>
-            </div>
+            </div> -->
             <div class="icon-item">
               <img src="./static/img/icons/eval.svg" alt="Benchmarking Icon">
-              <div><strong>Benchmarking</strong>: We examine existing MLLM benchmarks and introduce a new
-                vision-centric benchmark, "CV-Bench".</div>
+              <div><strong>Performance</strong>: OS-Genesis significantly outperforms other synthesis methods on benchmarks like AndroidWorld and WebArena.</div>
             </div>
           </div>
 
           <div class="button-container">
             <!-- replace arxiv -->
-            <a href="https://arxiv.org/abs/2406.16860" class="button paper-link" target="_blank">
+            <a href="https://arxiv.org/abs/2412.19723" class="button paper-link" target="_blank">
               <span class="icon is-small">
                 <i class="ai ai-arxiv"></i>
               </span>
               arXiv
             </a>
             <!-- replace pdf -->
-            <a href="https://arxiv.org/pdf/2406.16860" class="button paper-link" target="_blank">
+            <!-- <a href="https://arxiv.org/abs/2412.19723" class="button paper-link" target="_blank">
               <span class="icon is-small">
                 <i class="fas fa-file-pdf"></i>
               </span>
               <span>pdf</span>
-            </a>
+            </a> -->
             <!-- replace image -->
-            <a href="https://github.com/cambrian-mllm/cambrian" class="button" target="_blank">
+            <a href="https://github.com/OS-Copilot/OS-Genesis" class="button" target="_blank">
               <span class="icon is-small">
                 <i class="fab fa-github"></i>
               </span>
               <span>Code</span>
             </a>
             <!-- <br> -->
-            <a href="https://huggingface.co/collections/nyu-visionx/cambrian-1-models-666fa7116d5420e514b0f23c"
+            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
               class="button" target="_blank">
               <span class="icon is-small">
                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
@@ -173,7 +174,7 @@
               </span>
               <span>Checkpoints</span>
             </a>
-            <a href="https://huggingface.co/collections/nyu-visionx/cambrian-data-6667ce801e179b4fbe774e11"
+            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
               class="button" target="_blank">
               <span class="icon is-small">
                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
@@ -234,12 +235,8 @@
 
 
     <p class="text abstract">
-
-      We introduce OS-Genesis, a family of multimodal LLMs (MLLMs) designed with a
-      <strong>vision-<i>centric</i></strong> approach.
-      While stronger language models can enhance multimodal capabilities,
-      the design choices for vision components are often insufficiently explored and disconnected from visual
-      representation learning research.
+      <!-- <strong>vision-<i>centric</i></strong> -->
+      We introduce OS-Genesis, an interaction-driven pipeline that synthesizes high-quality and diverse GUI agent trajectory data without human supervision. By leveraging reverse task synthesis, OS-Genesis enables effective training of GUI agents to achieve superior performance on dynamic benchmarks such as AndroidWorld and WebArena.
 
       <br><br>
       Cambrian-1 is structured around five key pillars, each offering important insights into the design space of
@@ -633,718 +630,30 @@
       </d-figure>
     </div>
 
-    <div id="instruction_data" class="data-block">
-      <h1 class="text">Instruction Tuning Data for Training MLLMs</h1>
-      <p class="text">
-        Previous work highlights the importance of data in training MLLMs, but explicit investigations are
-        limited.
-        In this study, we gather all available instruction tuning data and examine data curation by enhancing
-        diversity, balancing sources, and improving mixtures.
-
-      </p>
-
-      <div class="subsection">
-        <h3 class="text">Data Collection</h3>
-        <p class="text" id="data_collection">
-          <strong>Collecting Instruction Tuning Data from existing data sources</strong>
-          We first use existing multimodal benchmarks and datasets involving visual interaction data,
-          such as Visual Question Answering (VQA) and OCR data.
-          We also collect a small volume of high-quality language-only instruction-following data to maintain
-          its language ability.
-        </p>
-        <d-figure id="fig-cambrian7m">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/cambrian_7m.png"
-              alt="Cambrian-7M: A Large-Scale Curated Instruction Tuning Dataset for Training MLLM">
-            <figcaption>
-              <strong>Figure 7:</strong> Cambrian-7M: A Large-Scale Curated Instruction Tuning Dataset for
-              Training MLLM.
-            </figcaption>
-          </figure>
-        </d-figure>
-        <p class="text">
-          <strong>Targeted Internet Data Collection Engine</strong>
-          We also introduce a data engine designed to create large-scale, reliable,
-          high-quality knowledge-based multimodal instruction tuning data.
-        </p>
-        <d-figure id="fig-dataengine">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/dataenginefigurepdf_crop.png"
-              alt="Targeted Internet Data Collection Engine">
-            <figcaption>
-              <strong>Figure 8:</strong> Targeted Internet Data Collection Engine.
-            </figcaption>
-          </figure>
-        </d-figure>
-
-        <p class="text">
-          <strong>Cambrian-10M</strong>
-          To this end, we create a large pool of instruction tuning data, which we refer to as Cambrian-10M.
-          This pool contains approximately 9784k data points, offering a diverse range of data for our work
-          and future research.
-          We visualize its composition in <a href="#fig-cambrian7m">Figure 7</a>.
-        </p>
-      </div>
-
-      <div id="sec:data_curation" class="subsection">
-        <h3 class="text">Data Curation</h3>
-        <p class="text">
-          Cambrian-10M is a large pool of instruction tuning data sourced from a variety of data sources,
-          with an unbalanced data ratio between categories.
-          Here, we take a preliminary step to study data curation by improving data balancing and adjusting
-          data ratios.
-        </p>
-
-        <p class="text" id="data_curation">
-          <strong>Data Balancing</strong>
-          We follow previous work to set thresholds t
-          for the number of data points from a single data source.
-          We choose t = 150k, 250k, 350k, and 450k in this section and observe an
-          elbow effect in <a href="#tab:data_balance_result">Table 3</a>&mdash;finding that a threshold
-          between 250k and 350k work the best for Cambrian-10M.
-        </p>
-        <d-figure id="fig-filter_k">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/Cumulative_Sum_of_Counts.png"
-              alt="Data Balancing via Applying Thresholds on Data Sources">
-            <figcaption>
-              <strong>Figure 9:</strong> Data Balancing via Applying Thresholds on Data Sources.
-            </figcaption>
-          </figure>
-        </d-figure>
-        <br>
-        <div id="tab:data_balance_result" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Average</th>
-                  <th>General</th>
-                  <th>Knowledge</th>
-                  <th>OCR & Chart</th>
-                  <th>Vision-Centric</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>150k</td>
-                  <td>53.7</td>
-                  <td>68.0</td>
-                  <td>51.3</td>
-                  <td>45.2</td>
-                  <td>50.5</td>
-                </tr>
-                <tr>
-                  <td>250k</td>
-                  <td class="highlight">54.3</td>
-                  <td class="highlight">68.1</td>
-                  <td>51.5</td>
-                  <td>45.3</td>
-                  <td>52.2</td>
-                </tr>
-                <tr>
-                  <td>350k</td>
-                  <td class="highlight">54.3</td>
-                  <td>67.4</td>
-                  <td>51.4</td>
-                  <td class="highlight">46.0</td>
-                  <td class="highlight">52.3</td>
-                </tr>
-                <tr>
-                  <td>450k</td>
-                  <td>54.2</td>
-                  <td>68.0</td>
-                  <td class="highlight">52.2</td>
-                  <td>45.5</td>
-                  <td>50.7</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <figcaption style="text-align: center; width: 100%;">
-            <strong>Table 3:</strong> Threshold 𝑡 value between 250k and 350k obtains better performance.
-          </figcaption>
-        </div>
-
-        <p class="text">
-          <strong>Data Ratio</strong>
-          Given the various capabilities of different types of visual instruction tuning data, it is essential
-          to balance the ratio of these data types.
-          We conduct pilot experiments with a fixed dataset size of 1350k,
-          examining the impact of different data ratios on downstream performance.
-          We visualize the results in <a href="#fig-data_ratio">Figure 10</a> and summarize our findings as
-          follows:
-          (i) Balancing General, OCR, and Language data is crucial.
-          (ii) Performance on knowledge-intensive tasks is influenced by multiple factors,
-          often requiring a mix of OCR, chart, reasoning, and general perception.
-        </p>
-        <d-figure id="fig-data_ratio">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/data_mixture_ratio_w_avg_score.png"
-              alt="Exploring instruction tuning data mixture ratios">
-            <figcaption>
-              <strong>Figrue 10:</strong> Exploring instruction tuning data mixture ratios.
-            </figcaption>
-          </figure>
-        </d-figure>
-
-        <p class="text">
-          <strong>Cambrian-7M</strong>
-          By applying data filtering to Cambrian-10M with our identified data ratio, we create a smaller but
-          higher-quality dataset called Cambrian-7M.
-          <a href="#tab:data_ratio_result">Table 4</a> showcases the benefits of a well-balanced and carefully
-          curated dataset. Despite having fewer samples, Cambrian-7M demonstrates improved performance.
-        </p>
-        <div id="tab:data_ratio_result" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Average</th>
-                  <th>General</th>
-                  <th>Knowledge</th>
-                  <th>OCR & Chart</th>
-                  <th>Vision-Centric</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>LLaVA-665K</td>
-                  <td>40.7</td>
-                  <td>64.7</td>
-                  <td>45.2</td>
-                  <td>20.8</td>
-                  <td>32.0</td>
-                </tr>
-                <tr>
-                  <td>Cambrian-10M</td>
-                  <td>54.8</td>
-                  <td>68.7</td>
-                  <td>51.6</td>
-                  <td class="highlight">47.3</td>
-                  <td>51.4</td>
-                </tr>
-                <tr>
-                  <td>Cambrian-7M</td>
-                  <td class="highlight">55.9</td>
-                  <td class="highlight">69.6</td>
-                  <td class="highlight">52.6</td>
-                  <td class="highlight">47.3</td>
-                  <td class="highlight">54.1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <figcaption style="text-align: center; width: 100%;">
-            Table 4: Performance improves with better instruction tuning data curation.
-          </figcaption>
-        </div>
-
-
-      </div>
-
-      <div class="subsection">
-        <h3 class="text">Alleviating the "Answer Machine Phenomenon" via System Prompts</h3>
-        <p class="text">
-          Here, we investigate a phenomenon we term the "answer machine phenomenon."
-          We observe that a well-trained MLLM may excel at VQA benchmarks, but lack basic conversational
-          abilities and default to outputting short, curt responses (see examples in <a href="#fig-sysprompt">Figure
-            5</a>).
-        </p>
-
-        <p class="text">
-          To address this, we find that incorporating additional system prompts during training mitigates this
-          phenomenon.
-          We append prompts such as "<em>Answer the question using a single word or phrase.</em>"
-          before questions that generate a single word or phrase in the response.
-          We observe that after integrating these system prompts, the model's benchmark performance remains
-          unchanged,
-          while its conversational ability significantly improves.
-        </p>
-        <d-figure id="fig-sysprompt">
-          <figure>
-            <img data-zoomable="" draggable="false" src="static/img/sysprompt.jpg"
-              alt="Incorporating System Prompt in Instruction Tuning Data alleviates “Answer Machine Phenomenon”">
-            <figcaption>
-              <strong>Figure 11:</strong> Incorporating System Prompt in Instruction Tuning Data
-              alleviates the “Answer Machine Phenomenon”.
-            </figcaption>
-          </figure>
-        </d-figure>
-      </div>
-    </div>
-
-    <div id='sota' class="sota-block">
-      <h1 class="text">State of the Art MLLM Performance</h1>
-      <p class="text">
-        Finally, we leverage the insights from all of our previous studies to train a high-performance Cambrian
-        model.
-        We train with three different sizes of LLM backbones: LLaMA-3-Instruct-8B, Vicuna-1.5-13B, and
-        Hermes-2-Yi-34B.
-        Our visual tower uses a combination of four models&mdash;SigLIP, CLIP, DINOv2, and OpenCLIP ConvNeXt
-        (see <a href="#sec:model_ensemble">Combining Multiple Vision Encoders</a>) with the <a
-          href="#connector_design">Spatial Vision Aggregator</a>.
-        We use 2.5M adapter data and Cambrian-7M instruction tuning data (see <a href="#sec:data_curation">Data
-          Curation</a>).
-        We evaluate our models on the <a href="#sec:benchmarking">categorized benchmarks</a>, and tabulate the
-        results in <a href="#tab:final_table">Table 5</a>. Cambrian-1 exceeds other open-source models such as
-        LLaVA-NeXT and Mini-Gemini, and achieves comparable performance on a number of benchmarks with the best
-        proprietary models such as GPT-4V, Gemini-Pro, and MM-1.
-      </p>
-      <div id="tab:final_table" style="display: flex; flex-direction: column; align-items: center;" class="figure">
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="tb-hdr">Model</th>
-                <th colspan="5" class="tb-hdr">General</th>
-                <th colspan="5" class="tb-hdr">Knowledge</th>
-                <th colspan="5" class="tb-hdr">OCR & Chart</th>
-                <th colspan="5" class="tb-hdr">Vision-Centric</th>
-              </tr>
-              <tr>
-                <th>Method</th>
-                <th class="rotate"># Vis Tok.</th>
-                <th class="rotate">Avg</th>
-                <th class="rotate">MME<sup>P</sup></th>
-                <th class="rotate">MMB</th>
-                <th class="rotate">SEED<sup>I</sup></th>
-                <th class="rotate">GQA</th>
-                <th class="rotate">Avg</th>
-                <th class="rotate">SQA<sup>I</sup></th>
-                <th class="rotate">MMMU<sup>V</sup></th>
-                <th class="rotate">MathVista<sup>M</sup></th>
-                <th class="rotate">AI2D</th>
-                <th class="rotate">Avg</th>
-                <th class="rotate">ChartQA</th>
-                <th class="rotate">OCRBench</th>
-                <th class="rotate">TextVQA</th>
-                <th class="rotate">DocVQA</th>
-                <th class="rotate">Avg</th>
-                <th class="rotate">MMVP</th>
-                <th class="rotate">RealworldQA</th>
-                <th class="rotate">CV-Bench<sup>2D</sup></th>
-                <th class="rotate">CV-Bench<sup>3D</sup></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>GPT-4V</td>
-                <td>UNK.</td>
-                <td>63.0</td>
-                <td>1409.4</td>
-                <td>75.8</td>
-                <td>69.1</td>
-                <td>36.8</td>
-                <td>65.2</td>
-                <td>75.7</td>
-                <td>56.8</td>
-                <td>49.9</td>
-                <td>78.2</td>
-                <td>77.4</td>
-                <td>78.5</td>
-                <td>64.5</td>
-                <td>78.0</td>
-                <td>88.4</td>
-                <td>62.4</td>
-                <td>50.0</td>
-                <td>61.4</td>
-                <td>64.3</td>
-                <td>73.8</td>
-              </tr>
-              <tr>
-                <td>Gemini-1.0 Pro</td>
-                <td>UNK.</td>
-                <td>-</td>
-                <td>1496.6</td>
-                <td>73.6</td>
-                <td>70.7</td>
-                <td>-</td>
-                <td>-</td>
-                <td>79.5</td>
-                <td>47.9</td>
-                <td>45.2</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>65.9</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Gemini-1.5 Pro</td>
-                <td>UNK.</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>58.5</td>
-                <td>52.1</td>
-                <td>80.3</td>
-                <td>-</td>
-                <td>81.3</td>
-                <td>-</td>
-                <td>73.5</td>
-                <td>86.5</td>
-                <td>-</td>
-                <td>-</td>
-                <td>67.5</td>
-                <td>-</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Grok-1.5</td>
-                <td>UNK.</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>53.6</td>
-                <td>52.8</td>
-                <td>88.3</td>
-                <td>-</td>
-                <td>76.1</td>
-                <td>-</td>
-                <td>78.1</td>
-                <td>85.6</td>
-                <td>-</td>
-                <td>-</td>
-                <td>68.7</td>
-                <td>-</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>MM-1-8B</td>
-                <td>144</td>
-                <td>-</td>
-                <td>1529.3</td>
-                <td>72.3</td>
-                <td>69.9</td>
-                <td>-</td>
-                <td>-</td>
-                <td>72.6</td>
-                <td>37.0</td>
-                <td>35.9</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>MM-1-30B</td>
-                <td>144</td>
-                <td>-</td>
-                <td>1637.6</td>
-                <td>75.1</td>
-                <td>72.1</td>
-                <td>-</td>
-                <td>-</td>
-                <td>81.0</td>
-                <td>44.7</td>
-                <td>39.4</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-              </tr>
-              <tr class="highlight-gray">
-                <td colspan="22"><i>Base LLM: Llama-3-Ins-8B</i></td>
-              </tr>
-              <tr>
-                <td>Mini-Gemini-HD-8B</td>
-                <td>2880</td>
-                <td>72.7</td>
-                <td><b>1606.0</b></td>
-                <td>72.7</td>
-                <td>73.2</td>
-                <td>64.5</td>
-                <td>55.7</td>
-                <td>75.1</td>
-                <td>37.3</td>
-                <td>37.0</td>
-                <td><b>73.5</b></td>
-                <td>62.9</td>
-                <td>59.1</td>
-                <td>47.7</td>
-                <td>70.2</td>
-                <td>74.6</td>
-                <td>51.5</td>
-                <td>18.7</td>
-                <td>62.1</td>
-                <td>62.2</td>
-                <td>63.0</td>
-              </tr>
-              <tr>
-                <td>LLaVA-NeXT-8B</td>
-                <td>2880</td>
-                <td>72.5</td>
-                <td>1603.7</td>
-                <td>72.1</td>
-                <td>72.7</td>
-                <td><b>65.2</b></td>
-                <td>55.6</td>
-                <td>72.8</td>
-                <td>41.7</td>
-                <td>36.3</td>
-                <td>71.6</td>
-                <td>63.9</td>
-                <td>69.5</td>
-                <td>49.0</td>
-                <td>64.6</td>
-                <td>72.6</td>
-                <td>56.6</td>
-                <td>38.7</td>
-                <td>60.1</td>
-                <td>62.2</td>
-                <td>65.3</td>
-              </tr>
-              <tr class="highlight-orange">
-                <td>Cambrian-1-8B</td>
-                <td class="highlight-blue">576</td>
-                <td><b>73.1</b></td>
-                <td>1,547.1</td>
-                <td><b>75.9</b></td>
-                <td><b>74.7</b></td>
-                <td>64.6</td>
-                <td><b>61.3</b></td>
-                <td><b>80.4</b></td>
-                <td><b>42.7</b></td>
-                <td><b>49.0</b></td>
-                <td>73.0</td>
-                <td><b>71.3</b></td>
-                <td><b>73.3</b></td>
-                <td><b>62.4</b></td>
-                <td><b>71.7</b></td>
-                <td><b>77.8</b></td>
-                <td><b>65.0</b></td>
-                <td><b>51.3</b></td>
-                <td><b>64.2</b></td>
-                <td><b>72.3</b></td>
-                <td><b>72.0</b></td>
-              </tr>
-              <tr class="highlight-gray">
-                <td colspan="22"><i>Base LLM: Vicuna-1.5-13B</i></td>
-              </tr>
-              <tr>
-                <td>Mini-Gemini-HD-13B</td>
-                <td>2880</td>
-                <td>70.7</td>
-                <td>1597.0</td>
-                <td>68.6</td>
-                <td>70.6</td>
-                <td>63.7</td>
-                <td>54.1</td>
-                <td>71.9</td>
-                <td>37.3</td>
-                <td>37.0</td>
-                <td>70.1</td>
-                <td>60.8</td>
-                <td>56.6</td>
-                <td>46.6</td>
-                <td>70.2</td>
-                <td>69.8</td>
-                <td>49.4</td>
-                <td>19.3</td>
-                <td>57.5</td>
-                <td>53.6</td>
-                <td>67.3</td>
-              </tr>
-              <tr>
-                <td>LLaVA-NeXT-13B</td>
-                <td>2880</td>
-                <td>69.9</td>
-                <td>1575.0</td>
-                <td>70.0</td>
-                <td>65.6</td>
-                <td><b>65.4</b></td>
-                <td>53.7</td>
-                <td>73.5</td>
-                <td>36.2</td>
-                <td>35.1</td>
-                <td>70.0</td>
-                <td>62.9</td>
-                <td>62.2</td>
-                <td>51.4</td>
-                <td>67.1</td>
-                <td>70.9</td>
-                <td>55.9</td>
-                <td>36.0</td>
-                <td>59.1</td>
-                <td>62.7</td>
-                <td>65.7</td>
-              </tr>
-              <tr class="highlight-orange">
-                <td>Cambrian-1-13B</td>
-                <td class="highlight-blue">576</td>
-                <td><b>73.7</b></td>
-                <td><b>1,610.4</b></td>
-                <td><b>75.7</b></td>
-                <td><b>74.4</b></td>
-                <td>64.3</td>
-                <td><b>60.2</b></td>
-                <td><b>79.3</b></td>
-                <td><b>40.0</b></td>
-                <td><b>48.0</b></td>
-                <td><b>73.6</b></td>
-                <td><b>71.3</b></td>
-                <td><b>73.8</b></td>
-                <td><b>61.9</b></td>
-                <td><b>72.8</b></td>
-                <td><b>76.8</b></td>
-                <td><b>62.2</b></td>
-                <td><b>41.3</b></td>
-                <td><b>63.0</b></td>
-                <td><b>72.5</b></td>
-                <td><b>71.8</b></td>
-              </tr>
-              <tr class="highlight-gray">
-                <td colspan="22"><i>Base LLM: Hermes2-Yi-34B</i></td>
-              </tr>
-              <tr>
-                <td>Mini-Gemini-HD-34B</td>
-                <td>2880</td>
-                <td>76.2</td>
-                <td>1659.0</td>
-                <td>80.6</td>
-                <td>75.3</td>
-                <td>65.8</td>
-                <td>62.4</td>
-                <td>77.7</td>
-                <td>48.0</td>
-                <td>43.4</td>
-                <td><b>80.5</b></td>
-                <td>68.1</td>
-                <td>67.6</td>
-                <td>51.8</td>
-                <td>74.1</td>
-                <td><b>78.9</b></td>
-                <td>63.8</td>
-                <td>37.3</td>
-                <td>67.2</td>
-                <td>71.5</td>
-                <td>79.2</td>
-              </tr>
-              <tr>
-                <td>LLaVA-NeXT-34B</td>
-                <td>2880</td>
-                <td>76.0</td>
-                <td>1633.2</td>
-                <td>79.3</td>
-                <td><b>75.9</b></td>
-                <td><b>67.1</b></td>
-                <td>62.5</td>
-                <td>81.8</td>
-                <td>46.7</td>
-                <td>46.5</td>
-                <td>74.9</td>
-                <td>67.7</td>
-                <td>68.7</td>
-                <td>54.5</td>
-                <td>69.5</td>
-                <td>78.1</td>
-                <td>64.0</td>
-                <td>47.3</td>
-                <td>61.0</td>
-                <td>73.0</td>
-                <td>74.8</td>
-              </tr>
-              <tr class="highlight-orange">
-                <td>Cambrian-1-34B</td>
-                <td class="highlight-blue">576</td>
-                <td><b>76.8</b></td>
-                <td><b>1689.3</b></td>
-                <td><b>81.4</b></td>
-                <td>75.3</td>
-                <td>65.8</td>
-                <td><b>67.0</b></td>
-                <td><b>85.6</b></td>
-                <td><b>49.7</b></td>
-                <td><b>53.2</b></td>
-                <td>79.7</td>
-                <td><b>71.9</b></td>
-                <td><b>75.6</b></td>
-                <td><b>60.0</b></td>
-                <td><b>76.7</b></td>
-                <td>75.5</td>
-                <td><b>68.5</b></td>
-                <td><b>52.7</b></td>
-                <td><b>67.8</b></td>
-                <td><b>74.0</b></td>
-                <td><b>79.7</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <figcaption style="text-align: center; width: 140%;">
-          Table 5: Cambrian-1 outperforms other open-source models and achieves comparable performance with
-          proprietary models, while using only 576 visual tokens.
-        </figcaption>
-      </div>
-      <p style="padding: 1em"></p>
-      <d-figure id="fig-comparison">
-        <figure>
-          <img data-zoomable="" draggable="false" src="static/img/comparison.PNG"
-            alt="Cambrian-1 outperforms other open-source models and achieves comparable performance with proprietary models">
-          <figcaption>
-            <strong>Figure 12:</strong> Cambrian-1 outperforms other open-source models and achieves
-            comparable performance with proprietary models.
-          </figcaption>
-        </figure>
-      </d-figure>
-
-    </div>
-
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
       <p class="text">
-        To conclude, Cambrian-1 is a family of state-of-the-art MLLMs that achieve top performance across
-        diverse benchmarks
-        and excel in visual-centric tasks. We provide model weights, open-source code, datasets, and detailed
-        recipes for model training and evaluation.
-        We hope our work will strengthen the open research community and accelerate research in both visual
-        representation learning and multimodal systems.
+        OS-Genesis is a data synthesis pipeline designed to revolutionize the construction of GUI agent trajectories. We hope that it can provide a promising direction for generating high-quality trajectory data for GUI agent training, bringing the community one step closer to achieving digital automation
       </p>
     </div>
+
+
+    <div id="Acknowledgement" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
+      <h2 class="text" style="margin-top:0px; margin-bottom:10px">Acknowledgement</h2>
+      <p class="text">
+        We would like to thank <a href="https://github.com/google-research/android_world" target="_blank">AndroidWorld</a> authors for helping us tackle various issues in dynamic environments, as well as the <a href="https://cambrian-mllm.github.io/" target="_blank">Cambrian</a> authors for providing this webpage template.
+      </p>
+    </div>    
 
   </d-article>
   <d-appendix>
     <h3>BibTeX</h3>
     <p class="bibtex">
-      @article{tong2024cambrian,<br>
+      @article{sun2024osgenesis,<br>
       &nbsp;&nbsp;title={{OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
       Synthesis}},<br>
-      &nbsp;&nbsp;author={Tong, Shengbang and Brown, Ellis and Wu, Penghao and Woo, Sanghyun and Middepogu, Manoj
-      and Akula, Sai Charitha and Yang, Jihan and Yang, Shusheng, and Iyer, Adithya and Pan, Xichen and Wang,
-      Austin and Fergus, Rob and LeCun, Yann and Xie, Saining},<br>
-      &nbsp;&nbsp;journal={arXiv preprint arXiv:2406.16860},<br>
+      &nbsp;&nbsp;author={Qiushi Sun and Kanzhi Cheng and Zichen Ding and Chuanyang Jin and Yian Wang and Fangzhi Xu and Zhenyu Wu and Chengyou Jia and Liheng Chen and Zhoumianze Liu and Ben Kao and Guohao Li and Junxian He and Yu Qiao and Zhiyong Wu},<br>
+      &nbsp;&nbsp;journal={arXiv preprint arXiv:2412.19723},<br>
       &nbsp;&nbsp;year={2024}<br>
       }
     </p>
