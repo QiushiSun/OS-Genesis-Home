@@ -58,6 +58,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> <!-- jquery -->
   <script defer src="./static/js/medium-zoom.min.js"></script>
   <script defer src="./static/js/zoom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -649,7 +650,43 @@
             Table 2: Performance on WenArena benchmarks.
           </figcaption>
         </div>
+      </div>
 
+      <div>
+        <h1 class="text">Analysis</h1>
+        <!-- Radar -->
+        <!--
+        <h2 class="text">How TRM Impacts Performance?</h2>
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%;"><canvas id="A-1-1"></canvas></div>
+          <div style="width: 49%;"><canvas id="A-1-2"></canvas></div>
+        </div>
+        -->
+
+        <!-- Line -->
+        <h2 class="text">How scaling Trajectory Data Improves Agentic Ability?</h2>
+        <canvas id="A-2"></canvas>
+
+        <!-- Bar #1 -->
+        <h2 class="text">How Far are we from Human Data?</h2>
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-1"></canvas>
+          </div>
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-2"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar #2 -->
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-3"></canvas>
+          </div>
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-4"></canvas>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -690,5 +727,396 @@
   <d-bibliography src="bibliography.bib"></d-bibliography>
   <script src="./static/js/nav-bar.js"></script>
 </body>
+
+<script>
+  Chart.defaults.font.family = "Charter";
+
+  // new Chart(document.querySelector("#A-1-1"), {
+  //   type: "radar",
+  //   data: {
+  //     labels: [
+  //       "AC-Type(H)",
+  //       "AC-SR(H)",
+  //       "AW-SR",
+  //       "AC-Type(L)",
+  //       "AC-SR(L)"
+  //     ],
+  //     datasets: [
+  //       {
+  //         label: "TRM",
+  //         data: [44.54, 66.15, 74.17, 90.72, 17.41],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
+  //         borderColor: "rgb(255, 99, 132)",
+  //         pointBackgroundColor: "rgb(255, 99, 132)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 99, 132)"
+  //       },
+  //       {
+  //         label: "Labeler",
+  //         data: [44.19, 66.37, 75.82, 90.67, 16.52],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
+  //         borderColor: "rgb(255, 159, 64)",
+  //         pointBackgroundColor: "rgb(255, 159, 64)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 159, 64)"
+  //       },
+  //       {
+  //         label: "w/o RM",
+  //         data: [43.9, 65.75, 74.1, 91.11, 14.73],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
+  //         borderColor: "rgb(255, 205, 86)",
+  //         pointBackgroundColor: "rgb(255, 205, 86)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 205, 86)"
+  //       }
+  //     ]
+  //   },
+  //   options: {
+  //     responsive: true,
+  //     scales: {
+  //       r: {
+  //         min: 10,
+  //         max: 100,
+  //         ticks: {
+  //           stepSize: 15
+  //         }
+  //       }
+  //     },
+  //     elements: {
+  //       line: {
+  //         borderWidth: 3
+  //       }
+  //     },
+  //     plugins: {
+  //         title: {
+  //         display: true,
+  //         text: "Qwen-7B"
+  //       }
+  //     }
+  //   },
+  // });
+
+  // new Chart(document.querySelector("#A-1-2"), {
+  //   type: "radar",
+  //   data: {
+  //     labels: [
+  //       "AC-Type(H)",
+  //       "AC-SR(H)",
+  //       "AW-SR",
+  //       "AC-Type(L)",
+  //       "AC-SR(L)"
+  //     ],
+  //     datasets: [
+  //       {
+  //         label: "TRM",
+  //         data: [35.77, 64.57, 71.37, 91.27, 16.96],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
+  //         borderColor: "rgb(255, 99, 132)",
+  //         pointBackgroundColor: "rgb(255, 99, 132)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 99, 132)"
+  //       },
+  //       {
+  //         label: "Labeler",
+  //         data: [35.53, 63.61, 70.54, 90.57, 16.44],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
+  //         borderColor: "rgb(255, 159, 64)",
+  //         pointBackgroundColor: "rgb(255, 159, 64)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 159, 64)"
+  //       },
+  //       {
+  //         label: "w/o RM",
+  //         data: [34.04, 60.95, 66.85, 89.37, 16.37],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
+  //         borderColor: "rgb(255, 205, 86)",
+  //         pointBackgroundColor: "rgb(255, 205, 86)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 205, 86)"
+  //       }
+  //     ]
+  //   },
+  //   options: {
+  //     scales: {
+  //       r: {
+  //         min: 10,
+  //         max: 100,
+  //         ticks: {
+  //           stepSize: 15
+  //         }
+  //       }
+  //     },
+  //     elements: {
+  //       line: {
+  //         borderWidth: 3
+  //       }
+  //     },
+  //     plugins: {
+  //       title: {
+  //         display: true,
+  //         text: "InternVL2-8B"
+  //       }
+  //     }
+  //   },
+  // });
+
+  new Chart(document.querySelector("#A-2"), {
+    type: "line",
+    maintainAspectRatio: false,
+    data: {
+      labels: ["0", "100", "200", "500", "1000", "1500"],
+      datasets: [
+        {
+          label: "Qwen2-VL-7B",
+          data: [6.25, 8.26, 8.26, 9.82, 17.41, 19.19],
+          fill: false,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)",
+          pointBackgroundColor: "rgb(255, 99, 132)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 99, 132)",
+          tension: 0.1
+        },
+        {
+          label: "InternVL2-4B",
+          data: [0, 0, 4.46, 7.14, 15.18, 14.73],
+          fill: false,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)",
+          pointBackgroundColor: "rgb(255, 159, 64)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 159, 64)",
+          tension: 0.1
+        },
+        {
+          label: "InternVL2-8B",
+          data: [4.46, 4.46, 3.57, 11.60, 16.96, 17.41],
+          fill: false,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)",
+          pointBackgroundColor: "rgb(255, 205, 86)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 205, 86)",
+          tension: 0.1
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "# Trajectories"
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Success Rate (%)"
+          }
+        }
+      }
+    }
+  });
+
+  new Chart(document.querySelector("#A-3-1"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [23.79, 64.43],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [23.56, 63.96],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [37.07, 72.37],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [51.62, 84.00],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-2"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [38.84, 71.33],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [37.3, 70.61],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [46.54, 74.87],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [56.47, 86.93],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-3"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [23.79, 64.43],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [23.56, 63.96],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [34.21, 71.45],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [30.2, 64.42],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-4"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [38.84, 71.33],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [37.3, 70.61],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [44.27, 90.78],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [42.41, 89.49],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+</script>
 
 </html>
