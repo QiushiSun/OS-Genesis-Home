@@ -303,7 +303,10 @@
     </p> -->
 
     <h1 class="text">GUI Trajectory Data</h1>
-    Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
+
+    <p class="text">
+      Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
+    </p>
 
     <ol class="text">
       <img src="public/traj.gif" width="40%" style="float: right; margin-left: 8px;">
@@ -666,13 +669,16 @@
 
         <!-- Line -->
         <h2 class="text">How Scaling Trajectory Data Improves Agentic Ability?</h2>
-        We investigate the impact of data scale on building GUI agents. 
-        To explore this, 
-        we partition the data synthesized by OS-Genesis into subsets, 
-        ranging from small-scale trajectories to those exceeding the size used in main experiments.
-        Using AndroidWorld as our testbed, we focus on two primary questions:
-        (1) How does performance improve as the data scale increases?
-        (2) Does performance saturate at higher data scales?
+
+        <p class="text">
+          We investigate the impact of data scale on building GUI agents. 
+          To explore this, 
+          we partition the data synthesized by OS-Genesis into subsets, 
+          ranging from small-scale trajectories to those exceeding the size used in main experiments.
+          Using AndroidWorld as our testbed, we focus on two primary questions:
+          (1) How does performance improve as the data scale increases?
+          (2) Does performance saturate at higher data scales?
+        </p>
 
         <canvas id="A-2"></canvas>
 
@@ -681,11 +687,13 @@
         <!-- Bar #1 -->
         <h2 class="text">How Far are we from Human Data?</h2>
 
-        We also investigate the gap between OS-Genesis-synthesized data and human-annotated data.
+        <p class="text">
+          We also investigate the gap between OS-Genesis-synthesized data and human-annotated data.
 
-        (1) trajectories from OS-Genesis v.s. human-annotated trajectories. We select 1K crowdsourced trajectories from AndroidControl training set for comparison.
-
-        As shown below, we significantly narrow the performance gap between synthetic trajectories and human-annotated trajectories. This is notably evident in high-level tasks, demonstrating that agents trained on \ours\ trajectories can plan and solve problems more closely aligned with human manners. In terms of average success rate, viewing human-annotated data as the gold standard, the performance retention rate of OS-Genesis data surpasses 80\%.
+          (1) trajectories from OS-Genesis v.s. human-annotated trajectories. We select 1K crowdsourced trajectories from AndroidControl training set for comparison.
+  
+          As shown below, we significantly narrow the performance gap between synthetic trajectories and human-annotated trajectories. This is notably evident in high-level tasks, demonstrating that agents trained on \ours\ trajectories can plan and solve problems more closely aligned with human manners. In terms of average success rate, viewing human-annotated data as the gold standard, the performance retention rate of OS-Genesis data surpasses 80\%.
+        </p>
 
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
           <div style="width: 49%; height: 240px;">
@@ -696,7 +704,9 @@
           </div>
         </div>
 
-        (2) high-level instructions synthesized through OS-Genesis v.s. human-written instructions. For comparison, we match 500 human-written tasks from the AndroidControl training set and use \gpt for exploration. As observed, even when high-level instructions are written by human, their performance falls short compared to OS-Genesis's instructions. This can be attributed to two main factors: (a) Pre-defined tasks sometimes fail to align with the dynamic environment, and (b) Models may introduce errors when interpreting the intentions of human annotators. In contrast, OS-Genesis generates data in a progressive way, grounded in low-level interactions, which makes it inherently more suitable for unsupervised exploration and adaptation.
+        <p class="text">
+          (2) high-level instructions synthesized through OS-Genesis v.s. human-written instructions. For comparison, we match 500 human-written tasks from the AndroidControl training set and use \gpt for exploration. As observed, even when high-level instructions are written by human, their performance falls short compared to OS-Genesis's instructions. This can be attributed to two main factors: (a) Pre-defined tasks sometimes fail to align with the dynamic environment, and (b) Models may introduce errors when interpreting the intentions of human annotators. In contrast, OS-Genesis generates data in a progressive way, grounded in low-level interactions, which makes it inherently more suitable for unsupervised exploration and adaptation.
+        </p>
 
         <!-- Bar #2 -->
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
