@@ -303,6 +303,7 @@
     </p> -->
 
     <h1 class="text">GUI Trajectory Data</h1>
+    Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
 
     <ol class="text">
       <img src="public/traj.gif" width="40%" style="float: right; margin-left: 8px;">
@@ -350,8 +351,8 @@
         <h2 class="text">Mobile </h2>
 
         <p class="text">
-          We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworlddynamicbenchmarkingenvironment"></d-cite> and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite>.
-          The results are shown in <a href="#tab:mobile">Table 2</a>
+          We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworlddynamicbenchmarkingenvironment"></d-cite> (in-domain setting) and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite> (OOD setting).
+          The results are shown in <a href="#tab:mobile">Table 1</a>
         </p>
         
         <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
@@ -647,7 +648,7 @@
             </table>
           </div>
           <figcaption style="text-align: center; width: 140%;">
-            Table 2: Performance on WenArena benchmarks.
+            Table 2: Performance on WebArena benchmarks.
           </figcaption>
         </div>
       </div>
@@ -664,11 +665,28 @@
         -->
 
         <!-- Line -->
-        <h2 class="text">How scaling Trajectory Data Improves Agentic Ability?</h2>
+        <h2 class="text">How Scaling Trajectory Data Improves Agentic Ability?</h2>
+        We investigate the impact of data scale on building GUI agents. 
+        To explore this, 
+        we partition the data synthesized by OS-Genesis into subsets, 
+        ranging from small-scale trajectories to those exceeding the size used in main experiments.
+        Using AndroidWorld as our testbed, we focus on two primary questions:
+        (1) How does performance improve as the data scale increases?
+        (2) Does performance saturate at higher data scales?
+
         <canvas id="A-2"></canvas>
+
+        As shown above, task performance generally improves as the number of trajectories increases, while saturation emerges at larger data scales.
 
         <!-- Bar #1 -->
         <h2 class="text">How Far are we from Human Data?</h2>
+
+        We also investigate the gap between OS-Genesis-synthesized data and human-annotated data.
+
+        (1) trajectories from OS-Genesis v.s. human-annotated trajectories. We select 1K crowdsourced trajectories from AndroidControl training set for comparison.
+
+        As shown below, we significantly narrow the performance gap between synthetic trajectories and human-annotated trajectories. This is notably evident in high-level tasks, demonstrating that agents trained on \ours\ trajectories can plan and solve problems more closely aligned with human manners. In terms of average success rate, viewing human-annotated data as the gold standard, the performance retention rate of OS-Genesis data surpasses 80\%.
+
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
           <div style="width: 49%; height: 240px;">
             <canvas id="A-3-1"></canvas>
@@ -677,6 +695,8 @@
             <canvas id="A-3-2"></canvas>
           </div>
         </div>
+
+        (2) high-level instructions synthesized through OS-Genesis v.s. human-written instructions. For comparison, we match 500 human-written tasks from the AndroidControl training set and use \gpt for exploration. As observed, even when high-level instructions are written by human, their performance falls short compared to OS-Genesis's instructions. This can be attributed to two main factors: (a) Pre-defined tasks sometimes fail to align with the dynamic environment, and (b) Models may introduce errors when interpreting the intentions of human annotators. In contrast, OS-Genesis generates data in a progressive way, grounded in low-level interactions, which makes it inherently more suitable for unsupervised exploration and adaptation.
 
         <!-- Bar #2 -->
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
@@ -714,7 +734,7 @@
       @article{sun2024osgenesis,<br>
       &nbsp;&nbsp;title={OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
       Synthesis},<br>
-      &nbsp;&nbsp;author={Qiushi Sun and Kanzhi Cheng and Zichen Ding and Chuanyang Jin and Yian Wang and Fangzhi Xu and Zhenyu Wu and Chengyou Jia and Liheng Chen and Zhoumianze Liu and Ben Kao and Guohao Li and Junxian He and Yu Qiao and Zhiyong Wu},<br>
+      &nbsp;&nbsp;author={Sun, Qiushi and Cheng, Kanzhi and Ding, Zichen and Jin, Chuanyang and Wang, Yian and Xu, Fangzhi and Wu, Zhenyu and Jia, Chengyou and Chen, Liheng and Liu, Zhoumianze and others},<br>
       &nbsp;&nbsp;journal={arXiv preprint arXiv:2412.19723},<br>
       &nbsp;&nbsp;year={2024}<br>
       }
@@ -727,6 +747,8 @@
   <d-bibliography src="bibliography.bib"></d-bibliography>
   <script src="./static/js/nav-bar.js"></script>
 </body>
+
+
 
 <script>
   Chart.defaults.font.family = "Charter";
